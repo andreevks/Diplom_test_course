@@ -1,10 +1,6 @@
-from .pages.main_page import MainPage
+from .pages.login_page import LoginPage
 from .pages.locators import MainPageLocators
 link = 'http://selenium1py.pythonanywhere.com/'
-
-def go_to_login_page(browser):
-    login_link = browser.find_element(*MainPageLocators.LOGIN_LINK)
-    login_link.click()
 
 def test_login_link(browser):
     # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
@@ -26,3 +22,8 @@ def test_should_be_register_form(browser):
     page.open()
     page.go_to_login_page()
     page.should_be_register_form()
+
+
+# pip install -r requirements.txt
+# команда для запуска
+# pytest -v --tb=line --language=en test_login_page.py

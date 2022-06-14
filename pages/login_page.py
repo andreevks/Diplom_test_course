@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
+from .locators import MainPageLocators
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
@@ -7,9 +8,13 @@ class LoginPage(BasePage):
         self.should_be_login_form()
         self.should_be_register_form()
 
+    def go_to_login_page(self):
+        login_link = self.browser.find_element(*MainPageLocators.LOGIN_LINK)
+        login_link.click()
+
     def should_be_login_url(self):
         # реализуйте проверку на корректный url адрес
-        assert '/login/' in self.browser.curren_url, 'Login link is not correct'
+        assert '/login/' in self.browser.current_url, 'Login link is not correct'
 
     def should_be_login_form(self):
         # реализуйте проверку, что есть форма логина
