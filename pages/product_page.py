@@ -1,5 +1,10 @@
 from .base_page import BasePage
 from .locators import ProductPageLocators
+import pytest
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
+
 
 class ProductPage(BasePage):
     def should_be_on_product_page(self):
@@ -21,3 +26,14 @@ class ProductPage(BasePage):
         assert self.browser.find_element(*ProductPageLocators.CART_PRICE).text == \
                self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text, \
                'Цена товара не совпадает'
+
+
+    # @pytest.mark.xfail(reason="This test can be failed")
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    # @pytest.mark.xfail(reason="This test can be failed")
+    def success_message_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is not desappeared, but should be"
