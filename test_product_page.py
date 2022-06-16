@@ -2,6 +2,7 @@ from .pages.product_page import ProductPage
 from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage
 from .pages.locators import ProductPageLocators
+from .pages.locators import LoginPageLocators
 import pytest
 import time
 
@@ -79,36 +80,31 @@ import time
 #     page.is_text_empty_basket()
 
 
-class TestUserAddToBasketFromProductPage:
+class TestUserAddToBasketFromProductPage():
 
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
-        link_reg = 'http://selenium1py.pythonanywhere.com/ru/accounts/login'
         email = str(time.time()) + "@fakemail.org"
         password = 'ABcO_132*1654+Isdlkfj'
-        page = LoginPage(browser, link_reg)
+        page = LoginPage(browser, LoginPageLocators.LOGIN_PAGE_URL)
+        page.open()
         page.register_new_user(email, password)
         page.should_be_authorized_user()
 
-    def test_user_can_add_product_to_basket(browser, link):
+    def test_user_can_add_product_to_basket(self, browser): #, link):
         # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
-        product_page = ProductPage(browser, link)  # ProductPageLocators.product_link)
+        self.product_page = ProductPage(browser, ProductPageLocators.product_link_3)
         # открываем страницу
-        product_page.open()
-        # # добавляем товар в корзину
-        # product_page.add_product_to_cart()
-        # # решаем задачку
-        # product_page.solve_quiz_and_get_code()
-
+        self.product_page.open()
         # запускаем все тесты из класса
-        product_page.should_be_on_product_page()
+        self.product_page.should_be_on_product_page()
 
-    def test_user_cant_see_success_message(browser):
+    def test_user_cant_see_success_message(self, browser):
         # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
-        product_page = ProductPage(browser, ProductPageLocators.product_link_3)
+        self.product_page = ProductPage(browser, ProductPageLocators.product_link_3)
         # открываем страницу
-        product_page.open()
-        product_page.should_not_be_success_message()
+        self.product_page.open()
+        self.product_page.should_not_be_success_message()
 
 
 # pytest -s test_product_page.py

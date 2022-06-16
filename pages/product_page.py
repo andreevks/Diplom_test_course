@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 class ProductPage(BasePage):
     def should_be_on_product_page(self):
         self.add_product_to_cart()
-        self.solve_quiz_and_get_code()
+        # self.solve_quiz_and_get_code()
         self.check_product_name_in_cart()
         self.check_product_price_in_cart()
 

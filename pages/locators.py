@@ -10,11 +10,13 @@ class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
 class LoginPageLocators():
+    LOGIN_PAGE_URL = 'http://selenium1py.pythonanywhere.com/ru/accounts/login'
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTRATION_FORM = (By.CSS_SELECTOR, "#register_form")
     REGISTRATION_EMAIL = (By.CSS_SELECTOR, "#id_registration-email")
     REGISTRATION_PASSWORD_1 = (By.CSS_SELECTOR, "#id_registration-password1")
     REGISTRATION_PASSWORD_2 = (By.CSS_SELECTOR, "#id_registration-password2")
+    REGISTRATION_SUBMIT_BTN = (By.CSS_SELECTOR, "button[name='registration_submit']")
 
 class BasketPageLocators():
     BASKET_GOODS = (By.CSS_SELECTOR, "div.basket-items")
