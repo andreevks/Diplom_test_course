@@ -7,6 +7,7 @@ class BasePageLocators():
     USER_ICON = (By.CSS_SELECTOR, 'i.icon-user')
 
 class MainPageLocators():
+    MAIN_PAGE_URL = 'http://selenium1py.pythonanywhere.com/'
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
 class LoginPageLocators():
@@ -23,9 +24,7 @@ class BasketPageLocators():
     BASKET_EMPTY_TEXT = (By.CSS_SELECTOR, "#content_inner")
 
 class ProductPageLocators():
-    # product_link = 'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear'
-    # product_link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019'
-    product_link_3 = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207'
+    PRODUCT_LINK = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207'
     ADD_TO_CART_BTN = (By.CSS_SELECTOR, "button.btn-add-to-basket")
     PRODUCT_NAME_IN_CART = (By.CSS_SELECTOR, "div.alertinner strong")
     PRODUCT_NAME_ON_PAGE = (By.CSS_SELECTOR, "div.product_main h1")
